@@ -3,6 +3,7 @@ local _M = {}
 local cjson = require "cjson"
 
 local model = require "models.model"
+local util = require "controlers.util"
 
 local req_method = ngx.req.get_method
 local req_get_args = ngx.req.get_uri_args
@@ -12,8 +13,14 @@ local ngx_var = ngx.var
 
 local function get_malf_select()
 	local args = req_get_args()
-	if args.brandID then
-		ngx.say(args.brandID, type(args.brandID))
+	if args.brandID and args.type then
+		--ngx.say(args.brandID, type(args.brandID))
+		local res = util.get_phone(args.brandID)
+		if res then
+			ngx.say(cjson.encode(res))
+		else
+			ngx.say("error brandID")
+		end
 	else
 		ngx.say("brandID nil")
 	end
@@ -23,8 +30,12 @@ end
 
 local function get_info_detail()
 	local args = req_get_args()
-	local res = "get_info_detail wrold"
-	ngx.say(res)
+	if args.deviceID and args.colorID and args.malfID then
+		local res = "get_info_detail wrold"
+		ngx.say(res)
+	else
+		ngx.say("args error")
+	end
 end
 
 local function get_order_detail()
@@ -34,13 +45,10 @@ end
 
 local method_get_func = {
 	["/order/malf"] = get_malf_select,
-	["/order/info"] = get_info_detail,
-	["/order/detail"] = get_order_detail
+	["/order/info"] = get_info_detail
 }
 
 local method_post_func = {
-	["/order/malf"] = get_malf_select,
-	["/order/info"] = get_info_detail,
 	["/order/detail"] = get_order_detail
 }
 
