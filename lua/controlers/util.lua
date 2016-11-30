@@ -1,128 +1,100 @@
 local _M = {}
 
 local lrucache = require "resty.lrucache"
+local cjson = require "cjson"
 
-local phone4_cache = lrucache.new(64)
-local phone4S_cache = lrucache.new(64)
-local phone5_cache = lrucache.new(64)
-local phone5C_cache = lrucache.new(64)
-local phone5S_cache = lrucache.new(64)
-local phoneSE_cache = lrucache.new(64)
-local phone6_cache = lrucache.new(64)
-local phone6P_cache = lrucache.new(64)
-local phone6S_cache = lrucache.new(64)
-local phone6SP_cache = lrucache.new(64)
-local phone7_cache = lrucache.new(64)
-local phone7P_cache = lrucache.new(64)
+local iphone4_color = {
+	["1"] = "黑色",
+	["2"] = "白色",
+}
 
-if not phone4_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
-if not phone4S_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphone4S_color = {
+	["1"] = "黑色",
+	["2"] = "白色",
+}
 
-if not phone5_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
-if not phone5C_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphone5_color = {
+	["1"] = "银（白色屏幕）",
+	["2"] = "灰（黑色屏幕）",
+}
 
-if not phoneSE_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
-if not phone6_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphone5C_color = {
+	["1"] = "白色",
+	["2"] = "粉色",
+	["3"] = "黄色",
+	["4"] = "蓝色",
+	["5"] = "绿色"
+}
 
-if not phone6P_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphone5S_color = {
+	["1"] = "银（白色屏幕）",
+	["2"] = "灰（黑色屏幕）",
+	["3"] = "金（白色屏幕）",
+}
 
-if not phone6S_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphoneSE_color = {
+	["1"] = "灰色",
+	["2"] = "银色",
+	["3"] = "金色",
+	["4"] = "玫瑰金色"
+}
 
-if not phone6SP_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphone6_color = {
+	["1"] = "银（白色屏幕）",
+	["2"] = "灰（黑色屏幕）",
+	["3"] = "金（白色屏幕）"
+}
 
-if not phone7_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
 
-if not phone7P_cache then
-	return error("failed to create the cache: " .. (err or "unknown"))
-end
+local iphone6P_color = {
+	["1"] = "银（白色屏幕）",
+	["2"] = "灰（黑色屏幕）",
+	["3"] = "金（白色屏幕）"
+}
 
-phone4_cache:set(1, "黑色")
-phone4_cache:set(2, "白色")
+local iphone6S_color = {
+	["1"] = "灰（黑色屏幕）",
+	["2"] = "银（白色屏幕）",
+	["3"] = "金（白色屏幕）",
+	["4"] = "粉（白色屏幕）"
+}
 
-phone4S_cache:set(1, "黑色")
-phone4S_cache:set(2, "白色")
+local iphone6SP_color = {
+	["1"] = "灰（黑色屏幕）",
+	["2"] = "银（白色屏幕）",
+	["3"] = "金（白色屏幕）",
+	["4"] = "粉（白色屏幕）"
+}
 
-phone5_cache:set(1, "银（白色屏幕）")
-phone5_cache:set(2, "灰（黑色屏幕）")
+local iphone7_color = {
+	["1"] = "金色",
+	["2"] = "玫瑰金色",
+	["3"] = "银色",
+	["4"] = "黑色",
+	["4"] = "亮黑色"
+}
 
-phone5C_cache:set(1, "白色")
-phone5C_cache:set(2, "粉色")
-phone5C_cache:set(3, "黄色")
-phone5C_cache:set(4, "蓝色")
-phone5C_cache:set(5, "绿色")
+local iphone7P_color = {
+	["1"] = "金色",
+	["2"] = "玫瑰金色",
+	["3"] = "银色",
+	["4"] = "黑色",
+	["4"] = "亮黑色"
+}
 
-phone5S_cache:set(1, "银（白色屏幕）")
-phone5S_cache:set(2, "灰（黑色屏幕）")
-phone5S_cache:set(3, "金（白色屏幕）")
-
-phoneSE_cache:set(1, "灰色")
-phoneSE_cache:set(2, "银色")
-phoneSE_cache:set(3, "金色")
-phoneSE_cache:set(4, "玫瑰金色")
-
-phone6_cache:set(1, "银（白色屏幕）")
-phone6_cache:set(2, "灰（黑色屏幕）")
-phone6_cache:set(3, "金（白色屏幕）")
-
-phone6P_cache:set(1, "银（白色屏幕）")
-phone6P_cache:set(2, "灰（黑色屏幕）")
-phone6P_cache:set(3, "金（白色屏幕）")
-
-phone6S_cache:set(1, "灰（黑色屏幕）")
-phone6S_cache:set(2, "银（白色屏幕）")
-phone6S_cache:set(3, "金（白色屏幕）")
-phone6S_cache:set(4, "粉（白色屏幕）")
-
-phone6SP_cache:set(1, "灰（黑色屏幕）")
-phone6SP_cache:set(2, "银（白色屏幕）")
-phone6SP_cache:set(3, "金（白色屏幕）")
-phone6SP_cache:set(4, "粉（白色屏幕）")
-
-phone7_cache:set(1, "灰（黑色屏幕）")
-phone7_cache:set(2, "银（白色屏幕）")
-phone7_cache:set(3, "金（白色屏幕）")
-phone7_cache:set(4, "粉（白色屏幕）")
-phone7_cache:set(5, "粉（白色屏幕）")
-
-phone7P_cache:set(1, "灰（黑色屏幕）")
-phone7P_cache:set(2, "银（白色屏幕）")
-phone7P_cache:set(3, "金（白色屏幕）")
-phone7P_cache:set(4, "粉（白色屏幕）")
-phone7P_cache:set(5, "粉（白色屏幕）")
-
-local phone_color = {
-	["iPhone 4"] = phone4_cache,
-	["iPhone 4S"] = phone4S_cache,
-	["iPhone 5"] = phone5_cache,
-	["iPhone 5C"] = phone5C_cache,
-	["iPhone 5S"] = phone5S_cache,
-	["iPhone 5SE"] = phone5SE_cache,
-	["iPhone 6"] = phone6_cache,
-	["iPhone 6P"] = phone6P_cache,
-	["iPhone 6S"] = phone6S_cache,
-	["iPhone 6SP"] = phone6SP_cache,
-	["iPhone 7"] = phone7_cache,
-	["iPhone 7P"] = phone7P_cache
+local phone_color_map = {
+	["iPhone 4"] = iphone4_color,
+	["iPhone 4S"] = iphone4S_color,
+	["iPhone 5"] = iphone5_color,
+	["iPhone 5C"] = iphone5C_color,
+	["iPhone 5S"] = iphone5S_color,
+	["iPhone 5SE"] = iphone5SE_color,
+	["iPhone 6"] = iphone6_color,
+	["iPhone 6P"] = iphone6P_color,
+	["iPhone 6S"] = iphone6S_color,
+	["iPhone 6SP"] = iphone6SP_color,
+	["iPhone 7"] = iphone7_color,
+	["iPhone 7P"] = iphone7P_color
 }
 
 local iphone_map = {
@@ -149,20 +121,35 @@ local brand_phone_map = {
 	["1"] = iphone_map
 }
 
-function _M.get_phone_color(phoneid)
+local brand_color_map = {
+	["1"] = phone_color_map
+}
 
-end
-
-function _M.get_phone(brand)
-	if brand_type[brand] and brand_phone_map[brand] then
-		return brand_phone_map[brand]
+function _M.get_phone_color(brand, phoneid)
+	local res = brand_color_map[brand]
+	local phone = iphone_map[phoneid]
+	ngx.say(cjson.encode(res))
+	if brand_color_map[brand] and iphone_map[phoneid] then
+		return brand_color_map[brand][iphone_map[phoneid]]
 	else
 		return nil
 	end
 end
 
+function _M.get_brand_color(brand)
+	return brand_color_map[brand]
+end
+
 function _M.get_brand()
 	return brand_type
+end
+
+function _M.get_brand_phone(brand)
+	if brand_type[brand] and brand_phone_map[brand] then
+		return brand_phone_map[brand]
+	else
+		return nil
+	end
 end
 
 return _M

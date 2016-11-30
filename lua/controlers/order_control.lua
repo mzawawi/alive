@@ -15,11 +15,17 @@ local function get_malf_select()
 	local args = req_get_args()
 	if args.brandID and args.type then
 		--ngx.say(args.brandID, type(args.brandID))
-		local res = util.get_phone(args.brandID)
+		local res = util.get_brand_phone(args.brandID)
 		if res then
 			ngx.say(cjson.encode(res))
 		else
-			ngx.say("error brandID")
+			ngx.say("get_brand_phone: error brandID")
+		end
+		res = util.get_phone_color(args.brandID, args.phoneid)
+		if res then
+			ngx.say(cjson.encode(res))
+		else
+			ngx.say("get_phone_color: error brandID")
 		end
 	else
 		ngx.say("brandID nil")
