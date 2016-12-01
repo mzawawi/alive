@@ -3,6 +3,7 @@ local _M = {}
 local cjson = require "cjson"
 
 local model = require "models.model"
+local order = require "models.order"
 local util = require "controlers.util"
 
 local req_method = ngx.req.get_method
@@ -13,25 +14,14 @@ local ngx_var = ngx.var
 
 local function get_malf_select()
 	local args = req_get_args()
-	if args.brandID and args.type then
-		--ngx.say(args.brandID, type(args.brandID))
-		local res = util.get_brand_phone(args.brandID)
-		if res then
-			ngx.say(cjson.encode(res))
-		else
-			ngx.say("get_brand_phone: error brandID")
-		end
-		res = util.get_phone_color(args.brandID, args.phoneid)
-		if res then
-			ngx.say(cjson.encode(res))
-		else
-			ngx.say("get_phone_color: error brandID")
-		end
-	else
-		ngx.say("brandID nil")
-	end
 	local res = "get_malf_select world"
-	ngx.say(res)
+	local res, err = order.get_device_by_brand_malf(args.bid, args.malfid)
+	--local res, err = order.get_malf_by_brand(args.bid)
+	if err then
+		ngx.say(err)
+	else
+		ngx.say(cjson.encode(res))
+	end
 end
 
 local function get_info_detail()

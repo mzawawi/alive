@@ -1,79 +1,35 @@
-create table tb_model(
+create table tb_device(
 	id int auto_increment,
-	model varchar(64) not null,
-	color varchar(64) not null,
-	other varchar(128),
 	brand varchar(64) not null,
-	modelID int not null,
 	brandID int not null,
-	colorID int not null,
+	model varchar(64) not null,
+	other varchar(128),
 	primary key(id),
-	constraint device unique(model, color, other)
+	constraint device unique(brand, model)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert tb_model(model, color, other) values ('iPhone 7', '金色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7', '玫瑰金色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7', '银色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7', '黑色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7', '亮黑色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7 Plus', '金色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7 Plus', '玫瑰金色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7 Plus', '银色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7 Plus', '黑色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 7 Plus', '亮黑色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S', '灰（黑色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S', '银（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S', '金（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S', '粉（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S Plus', '灰（黑色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S Plus', '银（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S Plus', '金（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6S Plus', '粉（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6', '银（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6', '灰（黑色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6', '金（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6 Plus', '银（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6 Plus', '灰（黑色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 6 Plus', '金（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone SE', '灰色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone SE', '银色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone SE', '金色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone SE', '玫瑰金色', '', 'iPhone', 1);	
-insert tb_model(model, color, other) values ('iPhone 5S', '银（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5S', '灰（黑色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5S', '金（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5C', '白色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5C', '粉色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5C', '黄色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5C', '蓝色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5C', '绿色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5', '银（白色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 5', '灰（黑色屏幕）', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 4S', '黑色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 4S', '白色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 4', '黑色', '', 'iPhone', 1);
-insert tb_model(model, color, other) values ('iPhone 4', '白色', '', 'iPhone', 1);
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 7', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 7P', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 6S', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 6SP', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 6', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 6P', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 5S', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 5C', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 5SE', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 5', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 4S', '');
+insert tb_device(brand, brandID, model, other) values ('iPhone', 1,'iPhone 4', '');
 
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad 2', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad 3', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad 4', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad Air', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad Air2', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad Mini', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad Mini2', '');
+insert tb_device(brand, brandID, model, other) values ('iPad', 2,'iPad Mini3', '');
 
-insert tb_model(model, color, other) values ('iPad 2', '白色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad 2', '黑色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad 3', '白色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad 3', '黑色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad 4', '白色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad 4', '黑色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Air', '银色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Air', '灰色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Air2', '银色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Air2', '灰色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Air2', '金色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini ', '白色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini ', '黑色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini ',  '银色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini2', '银色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini2',  '灰色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini3', '灰色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini3',  '白色', '', 'iPad', 2);
-insert tb_model(model, color, other) values ('iPad Mini3', '金色', '', 'iPad', 2);	
 
 create table tb_malfunction(
 	id int auto_increment,
@@ -132,15 +88,16 @@ insert tb_malfunction(malfunction, type, maldetail, descripe) values('其他', 9
 insert tb_malfunction(malfunction, type, maldetail, descripe) values('其他', 9, '以旧换新', '');
 insert tb_malfunction(malfunction, type, maldetail, descripe) values('其他', 9, '人工沟通确定故障', '');
 
+
 create table tb_solution(
 	id int auto_increment,
-	modelID int not null,
+	deviceID int not null,
 	malfID int not null,
 	scheme varchar(128),
 	price int,
 	discount int,
 	primary key (id),
-	foreign key (modelID) references tb_model (id)
+	foreign key (deviceID) references tb_device (id)
 	on update cascade on delete restrict,
 	foreign key (malfID) references tb_malfunction (id)
 	on update cascade on delete restrict
