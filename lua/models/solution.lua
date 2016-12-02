@@ -4,7 +4,7 @@ local mysql = require "resty.mysql"
 local util = require "models.util"
 
 function _M.get_solution_list()
-	local sql = "select id, modelID, malfID, scheme, warranty, price, discount from tb_solution"
+	local sql = "select id, deviceID, malfID, scheme, warranty, price, discount from tb_solution"
 	local res, err = util.query_mysql(sql)
 	return res, err
 end

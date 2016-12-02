@@ -103,13 +103,6 @@ create table tb_solution(
 	on update cascade on delete restrict
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table tb_user(
-	id int auto_increment,
-	username varchar(128) not null,
-	password varchar(128) not null,
-	permission int not null,
-	primary key (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table tb_customer(
 	id int auto_increment,

@@ -5,6 +5,7 @@ local cjson = require "cjson"
 local model = require "models.model"
 local order = require "models.order"
 local util = require "controlers.util"
+local template = require "resty.template"
 
 local req_method = ngx.req.get_method
 local req_get_args = ngx.req.get_uri_args
@@ -15,8 +16,15 @@ local ngx_var = ngx.var
 local function get_malf_select()
 	local args = req_get_args()
 	local res = "get_malf_select world"
-	local res, err = order.get_device_by_brand_malf(args.bid, args.malfid)
+	--local res, err = order.get_device_by_brand_malf(args.bid, args.malfid)
 	--local res, err = order.get_malf_by_brand(args.bid)
+
+	local res, err = order.get_device_by_brand_malf(args.bid, args.malfid)
+	ngx.say(type(res))
+	for i, v in ipairs(res) do
+  		ngx.say(res[i].model)
+	end
+	template.render("index.html", { malf = res })
 	if err then
 		ngx.say(err)
 	else
@@ -34,9 +42,11 @@ local function get_info_detail()
 	end
 end
 
-local function get_order_detail()
-	local res = "get_order_detail world"
-	ngx.say(res)
+local function post_order_detail()
+	req_read_body()
+	local args = req_get_post()
+	
+	ngx.say(cjson.encode(args))
 end
 
 local method_get_func = {
@@ -45,7 +55,7 @@ local method_get_func = {
 }
 
 local method_post_func = {
-	["/order/detail"] = get_order_detail
+	["/order/detail"] = post_order_detail
 }
 
 function _M.run()
@@ -58,6 +68,7 @@ function _M.run()
 			ngx.say("error url")
 		end
 	elseif method == "POST" then
+		ngx.say(uri)
 		if method_post_func[uri] then
 			method_post_func[uri]()
 		else
