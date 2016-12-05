@@ -20,11 +20,7 @@ local function get_malf_select()
 	--local res, err = order.get_malf_by_brand(args.bid)
 
 	local res, err = order.get_device_by_brand_malf(args.bid, args.malfid)
-	ngx.say(type(res))
-	for i, v in ipairs(res) do
-  		ngx.say(res[i].model)
-	end
-	template.render("index.html", { malf = res })
+	template.render("index.html", { device = res })
 	if err then
 		ngx.say(err)
 	else

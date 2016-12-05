@@ -4,7 +4,7 @@ local mysql = require "resty.mysql"
 local util = require "models.util"
 
 function _M.get_device_by_brand_malf(brandid, malfid)
-	local sql = "SELECT DISTINCT tb_device.model FROM (tb_device ,tb_malfunction) "
+	local sql = "SELECT DISTINCT tb_device.model, tb_device.id FROM (tb_device ,tb_malfunction) "
 					.. "INNER JOIN tb_solution ON tb_solution.deviceID = tb_device.id AND tb_solution.malfID = tb_malfunction.id "
 					.. "WHERE tb_malfunction.type='" .. malfid .. "' AND tb_device.brandID='" .. brandid .. "'"
 	local res, err = util.query_mysql(sql)
