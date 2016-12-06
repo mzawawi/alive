@@ -22,7 +22,7 @@ function _M.get_detail_by_brand_malf(brandid, malfid)
 end
 
 function _M.get_malf_by_brand(brandid)
-	local sql = "SELECT DISTINCT tb_malfunction.malfunction FROM (tb_device ,tb_malfunction) "
+	local sql = "SELECT DISTINCT tb_malfunction.malfunction, tb_malfunction.type FROM (tb_device ,tb_malfunction) "
 					.. "INNER JOIN tb_solution ON tb_solution.deviceID = tb_device.id AND tb_solution.malfID = tb_malfunction.id "
 					.. "WHERE tb_device.brandID='" .. brandid .. "'"
 	local res, err = util.query_mysql(sql)
@@ -39,6 +39,5 @@ function _M.get_solu_by_device_malf(deviceid, malfid)
 	ngx.say(sql)
 	return res, err
 end
-
 
 return _M

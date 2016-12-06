@@ -6,6 +6,7 @@ local model = require "models.model"
 local order = require "models.order"
 local util = require "controlers.util"
 local template = require "resty.template"
+local http = require "resty.http"
 
 local req_method = ngx.req.get_method
 local req_get_args = ngx.req.get_uri_args

@@ -8,22 +8,15 @@
 
 <p><a href="/">home</a></p>
 <p><h4>iPhone</h4></p>
-<p><a href="/order/malf?brandid=1&malfid=1">屏幕</a></p>
-<p><a href="/order/malf?brandid=1&malfid=2">摄像头</a></p>
-<p><a href="/order/malf?brandid=1&malfid=3">按键</a></p>
-<p><a href="/order/malf?brandid=1">电池</a></p>
-<p><a href="/order/malf?brandid=1">声音</a></p>
-<p><a href="/order/malf?brandid=1">外壳边框</a></p>
-<p><a href="/order/malf?brandid=1">感应</a></p>
-<p><a href="/order/malf?brandid=1">信号</a></p>
-<p><a href="/order/malf?brandid=1">其他</a></p>
 
-{% for _, value in ipairs(device) do %}
-	<p data="{{ value.id }}">{{ value.model }}</p>
+{% for _, value in ipairs(iphonemalf) do %}
+	<p><a href="/order/malf?brandid=1&malfid={{value.type}}">{{value.malfunction}}</a></p>
 {% end %}
 
 <p><h4>iPad</h4></p>
-<p><a href="/order/malf?brandid=2">iPad</a></p>
+{% for _, value in ipairs(ipadmalf) do %}
+	<p><a href="/order/malf?brandid=1&malfid={{value.type}}">{{value.malfunction}}</a></p>
+{% end %}
 
 <form action="/order/detail" method="post">
 model:<br>
