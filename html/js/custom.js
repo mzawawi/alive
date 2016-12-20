@@ -27,6 +27,19 @@ $(document).ready(function() {
         $(".navbar-collapse").collapse('hide');
     });
 
+    $('.fualt-box-show').animate({top: 0}, 300).show();
+
+    $('#apple').click(function(){
+        $('.fualt-box-show').animate({top: 0}, 300).show();
+        $('#huawei span').removeClass("current");
+        $('#apple span').addClass("current");
+    });
+    $('#huawei').click(function(){
+        $('.fualt-box-show').animate({top: -332}, 300).show();
+        $('#apple span').removeClass("current");
+        $('#huawei span').addClass("current");
+    });
+
 
  /* Parallax section
     -----------------------------------------------*/

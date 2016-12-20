@@ -52,5 +52,48 @@
 }
 
 .tab-item .current {
-	border-bottom: solid #ff0000;
+	border-bottom: 4px solid #ff0000;
+}
+
+#fualt-box {
+	height: 332px;
+	position: relative;
+	overflow: hidden;
+	background-color: #f9f6f0;
+}
+
+.fualt-box-show {
+	height: 332px;
+	position: relative;
+	text-align: center;
+}
+
+.fualt-box-show-item {
+	cursor: pointer;
+	margin: 10px;
+	padding: 10px 50px;
+	background-color: #fff;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  text-decoration:none;
+}
+
+.fualt-box-show-item a, .fualt-box-show-item a:hover {
+	text-decoration:none;
+}
+
+.fualt-box-show-item:hover {
+  -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  top: -10px;
 }
