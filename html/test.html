@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta charset="UTF-8">
+<title>DIV+CSS布局实例：TAB滑动门标签切换代码</title>
+<style type="text/css"> 
+* {list-style-type:none; font-size:12px; text-decoration:none; margin:0; padding:0;}
+a {behavior:url(xuxian.htc)}
+.woaicss {width:438px; height:300px; overflow:hidden; margin:50px auto;}
+.woaicss_title {width:438px; height:30px; background:#fff url(http://myjs.jz123.cn/inc1/btn_bg.png)  no-repeat; overflow:hidden;}/*http://myjs.jz123.cn/inc1/btn_bg.png*/
+.woaicss_title li {display:block; float:left; margin:0 2px 0 0; display:inline; text-align:center;}
+.woaicss_title li a {display:block; width:90px; heigth:30px; line-height:34px; color:#fff;}
+.woaicss_title li a:hover {color:red; text-decoration:underline;}
+.woaicss_title_bg1 {background-position:0 0;}
+.woaicss_title_bg2 {background-position:0 -30px;}
+.woaicss_title_bg3 {background-position:0 -60px;}
+.woaicss_title_bg4 {background-position:0 -90px;}
+.woaicss_con {display:block; width:430px; height:260px; background:url() no-repeat 0 0; overflow:hidden; BORDER: #aecbd4 1px solid; }/*/images/20110424/con_bg.png*/
+.woaicss_con ul {width:418px; height:250px; margin:12px auto;}
+.woaicss_con li {width:418px; line-height:30px; margin:0 auto; white-space:nowrap; text-overflow:ellipsis; overflow: hidden;}
+.woaicss_con li a {color:#03c;}
+.woaicss_con li a:hover {color:#069; text-decoration:underline;}
+.woaicss_copy {width:438px; margin:10px auto; text-align:center;}
+.woaicss_copy a {color:#f00;}
+</style>
+</head>
+ 
+<body>
+ 
+<div class="woaicss">
+<script language="javascript"> 
+ function woaicssq(num){
+ for(var id = 1;id<=4;id++)
+ {
+ var MrJin="woaicss_con"+id;
+ if(id==num)
+ document.getElementById(MrJin).style.display="block";
+ else
+ document.getElementById(MrJin).style.display="none";
+ }
+ if(num==1) 
+ document.getElementById("woaicsstitle").className="woaicss_title woaicss_title_bg1";
+ if(num==2)
+ document.getElementById("woaicsstitle").className="woaicss_title woaicss_title_bg2";
+ if(num==3)
+ document.getElementById("woaicsstitle").className="woaicss_title woaicss_title_bg3";
+ if(num==4)
+ document.getElementById("woaicsstitle").className="woaicss_title woaicss_title_bg4";
+ }
+</script>
+ <ul class="woaicss_title woaicss_title_bg1" id="woaicsstitle">
+  <li><a href="#" target="_blank" onmouseover="javascript:woaicssq(1)">TAB ①</a></li>
+  <li><a href="#" target="_blank" onmouseover="javascript:woaicssq(2)">TAB ②</a></li>
+  <li><a href="#" target="_blank" onmouseover="javascript:woaicssq(3)">TAB ③</a></li>  
+  <li><a href="#" target="_blank" onmouseover="javascript:woaicssq(4)">TAB ④</a></li>
+ </ul>
+ <div class="woaicss_con" id="woaicss_con1" style="display:block;">
+   <ul>
+     <li>· <a title="超级漂亮的几款清新、常用的网页CSS布局配色实例" target="_blank" href="#"> 超级漂亮的几款清新、常用的网页CSS布局配色实例</a></li>
+     <li>· <a title="CSS制作斜角上有背景图片的Div层" target="_blank" href="#"> CSS制作斜角上有背景图片的Div层</a></li>
+     <li>· <a title="Js实现的层展开、层折叠效果，默认时候层是折叠的" target="_blank" href="#"> Js实现的层展开、层折叠效果，默认时候层是折叠的</a></li>
+     <li>· <a title="DIV始终固定在网页右下角位置的CSS实现方法" target="_blank" href="#"> DIV始终固定在网页右下角位置的CSS实现方法</a></li>
+     <li>· <a title="JavaScript未知高度元素的垂直居中的方法" target="_blank" href="#"> JavaScript未知高度元素的垂直居中的方法</a></li>
+     <li>· <a title="渐变彩色的文字" target="_blank" href="#"> 渐变彩色的文字</a></li>
+     <li>· <a title="指定文字逐条显示" target="_blank" href="#"> 指定文字逐条显示</a></li>
+     <li>· <a title="滚动的标题栏" target="_blank" href="#"> 滚动的标题栏</a></li>
+   </ul>
+ </div>
+ <div class="woaicss_con" id="woaicss_con2" style="display:none;">
+   <ul>
+<li>·
+<a title="JS 4屏平滑滚动幻灯片特效" target="_blank" href="#">
+JS 4屏平滑滚动幻灯片特效</a></li>
+<li>·
+<a title="图片的无缝滚动（纵向、横向）" target="_blank" href="#">
+图片的无缝滚动（纵向、横向）</a></li>
+<li>·
+<a title="鼠标触及带边框的菜单" target="_blank" href="#">
+鼠标触及带边框的菜单</a></li>
+<li>·
+<a title="比较实用的CSS控制链接颜色效果" target="_blank" href="#">
+比较实用的CSS控制链接颜色效果</a></li>
+<li>·
+<a title="鼠标接触或者离开图片时，图片大小会相应变化" target="_blank" href="#">
+鼠标接触或者离开图片时，图片大小会相应变化</a></li>
+<li>·
+<a title="特殊的鼠标悬停提示" target="_blank" href="#">
+特殊的鼠标悬停提示</a></li>
+<li>·
+<a title="CSS Sprite制作的鼠标感应网站导航条" target="_blank" href="#">
+CSS Sprite制作的鼠标感应网站导航条</a></li>
+<li>·
+<a title="鼠标激活显示背景色的CSS特效代码" target="_blank" href="#">
+鼠标激活显示背景色的CSS特效代码</a></li>
+   </ul>
+ </div>
+ <div class="woaicss_con" id="woaicss_con3" style="display:none;">
+   <ul>
+<li>·
+<a title="[酷] 又一款FLASH图片切换效果代码" target="_blank" href="#">
+[酷] 又一款FLASH图片切换效果代码</a></li>
+<li>·
+<a title="精致的翻动图片新闻代码" target="_blank" href="#">
+精致的翻动图片新闻代码</a></li>
+<li>·
+<a title="跟随鼠标顶部奇妙的海底生花" target="_blank" href="#">
+跟随鼠标顶部奇妙的海底生花</a></li>
+<li>·
+<a title="强制点击广告代码的特效" target="_blank" href="#">
+强制点击广告代码的特效</a></li>
+<li>·
+<a title="鼠标经过列表显示小图的列表特效代码" target="_blank" href="#">
+鼠标经过列表显示小图的列表特效代码</a></li>
+<li>·
+<a title="不用圆角图片制作的圆角效果" target="_blank" href="#">
+不用圆角图片制作的圆角效果</a></li>
+<li>·
+<a title="超级漂亮的几款清新、常用的网页CSS布局配色实例" target="_blank" href="#">
+超级漂亮的几款清新、常用的网页CSS布局配色实例</a></li>
+<li>·
+<a title="CSS制作斜角上有背景图片的Div层" target="_blank" href="#">
+CSS制作斜角上有背景图片的Div层</a></li>
+   </ul>
+ </div>
+ <div class="woaicss_con" id="woaicss_con4" style="display:none;">
+   <ul>
+<li>·
+<a title="Js实现的层展开、层折叠效果，默认时候层是折叠的" target="_blank" href="#">
+Js实现的层展开、层折叠效果，默认时候层是折叠的</a></li>
+<li>·
+<a title="DIV始终固定在网页右下角位置的CSS实现方法" target="_blank" href="#">
+DIV始终固定在网页右下角位置的CSS实现方法</a></li>
+<li>·
+<a title="JavaScript未知高度元素的垂直居中的方法" target="_blank" href="#">
+JavaScript未知高度元素的垂直居中的方法</a></li>
+<li>·
+<a title="渐变彩色的文字" target="_blank" href="#">
+渐变彩色的文字</a></li>
+<li>·
+<a title="指定文字逐条显示" target="_blank" href="#">
+指定文字逐条显示</a></li>
+<li>·
+<a title="滚动的标题栏" target="_blank" href="#">
+滚动的标题栏</a></li>
+<li>·
+<a title="JS 4屏平滑滚动幻灯片特效" target="_blank" href="#">
+JS 4屏平滑滚动幻灯片特效</a></li>
+<li>·
+<a title="图片的无缝滚动（纵向、横向）" target="_blank" href="#">
+图片的无缝滚动（纵向、横向）</a></li>
+   </ul>
+ </div> 
+</div> 
+</body>
